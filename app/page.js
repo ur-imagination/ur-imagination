@@ -1,6 +1,6 @@
 import React from "react";
-import  {HeroParallax}  from "@/components/ui/hero-parallax";
-
+import { HeroParallax } from "@/components/ui/hero-parallax";
+import InfiniteMovingCardsDemo from "@/components/MovingCards";
 
 export const products = [
   {
@@ -99,7 +99,12 @@ export const products = [
 ];
 
 function Home() {
-  return <HeroParallax products={products} />;
+  return(
+  <>
+    <HeroParallax products={products} />
+    <InfiniteMovingCardsDemo />
+  </>
+  )
 }
 
-export default Home
+export default Home;

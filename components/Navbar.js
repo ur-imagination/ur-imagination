@@ -2,8 +2,10 @@
 import React, { useState } from "react";
 import { HoveredLink, Menu, MenuItem, ProductItem } from "@/components/ui/navbar-menu";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-export function NavbarDemo() {
+export function MainNavbar() {
     return (
         <div className="relative w-full flex items-center justify-center">
             <Navbar className="top-2" />
@@ -18,6 +20,7 @@ function Navbar({
     className
 }) {
     const [active, setActive] = useState(null);
+    const router =  useRouter()
     return (
         <div
             className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}>
@@ -30,20 +33,23 @@ function Navbar({
                         <HoveredLink href="/branding">Branding</HoveredLink>
                     </div>
                 </MenuItem>
+                <Link
+                href="/products"
+                >
                 <MenuItem setActive={setActive} active={active} item="Products">
                     <div className="  text-sm grid grid-cols-2 gap-10 p-4">
                         <ProductItem
-                            title="Algochurn"
+                            title="CSIP"
                             href="https://algochurn.com"
                             src="https://assets.aceternity.com/demos/algochurn.webp"
                             description="Prepare for tech interviews like never before." />
                         <ProductItem
-                            title="Tailwind Master Kit"
+                            title="AKG"
                             href="https://tailwindmasterkit.com"
                             src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
                             description="Production ready Tailwind css components for your next project" />
                         <ProductItem
-                            title="Moonbeam"
+                            title="Vinay Bajrangi"
                             href="https://gomoonbeam.com"
                             src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
                             description="Never write from scratch again. Go from idea to blog in minutes." />
@@ -54,6 +60,7 @@ function Navbar({
                             description="Respond to government RFPs, RFIs and RFQs 10x faster using AI" />
                     </div>
                 </MenuItem>
+                </Link>
                 <MenuItem setActive={setActive} active={active} item="Pricing">
                     <div className="flex flex-col space-y-4 text-sm">
                         <HoveredLink href="/hobby">Hobby</HoveredLink>
@@ -62,6 +69,11 @@ function Navbar({
                         <HoveredLink href="/enterprise">Enterprise</HoveredLink>
                     </div>
                 </MenuItem>
+                <Link 
+                href="/contact"
+                >
+                Contact
+                </Link>
             </Menu>
         </div>
     );
